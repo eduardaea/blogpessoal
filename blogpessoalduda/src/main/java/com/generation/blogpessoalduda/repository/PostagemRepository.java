@@ -1,4 +1,4 @@
-package com.generation.blogpessoaldudarepository;
+package com.generation.blogpessoalduda.repository;
 
 import java.util.List;
 
