@@ -6,12 +6,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.UpdateTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "tb_postagens")
@@ -29,21 +32,14 @@ public class PostagemModel {
 	@Size(min = 10, max = 1000, message = "O atributo texto deve conter no mínimo 10 e no máximo 500 caracteres")
 	private String texto;
 
-	/**
-	 * A anotação @UpdateTimestamp Indica se o atributo receberá um Timestamp (Data
-	 * e hora do sistema) e sempre que a Postagem for atualizada o atributo também
-	 * será atualizado.
-	 */
+	
 	@UpdateTimestamp
 	private LocalDateTime data;
 
-	/**
-	 * 
-	 * Os Métodos Get e Set obrigatoriamente devem ser criados para todos os
-	 * atributos da Classe, inclusive os novos atributos que forem adicionados no
-	 * decorrer do processo de Desenvolvimento.
-	 * 
-	 */
+	@ManyToOne
+	@JsonIgnoreProperties("postagem")
+	private TemaModel tema;
+
 	public Long getId() {
 		return id;
 	}
