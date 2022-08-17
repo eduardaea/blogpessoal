@@ -39,6 +39,10 @@ public class PostagemModel {
 	@ManyToOne
 	@JsonIgnoreProperties("postagem")
 	private TemaModel tema;
+	
+	@ManyToOne
+	@JsonIgnoreProperties("postagem")
+	private UsuarioModel user;
 
 	public Long getId() {
 		return id;
@@ -70,6 +74,22 @@ public class PostagemModel {
 
 	public void setData(LocalDateTime data) {
 		this.data = data;
+	}
+
+	public TemaModel getTema() {
+		return tema;
+	}
+
+	public void setTema(TemaModel tema) {
+		this.tema = tema;
+	}
+
+	public UsuarioModel getUser() {
+		return user;
+	}
+
+	public void setUser(UsuarioModel user) {
+		this.user = user;
 	}
 
 }
